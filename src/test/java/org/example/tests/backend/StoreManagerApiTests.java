@@ -1,8 +1,8 @@
-package org.example.tests;
+package org.example.tests.backend;
 
 import org.junit.jupiter.api.Test;
 
-public class StoreManagerTests {
+public class StoreManagerApiTests {
 
     @Test
     void firstApiTest() {
