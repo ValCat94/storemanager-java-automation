@@ -1,16 +1,19 @@
 package org.example.tests.frontend;
 
 import org.example.tests.BaseTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StoreManagerUiTests extends BaseTest {
+import java.time.Duration;
 
-    /*
-    http://localhost:8000
-     */
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class StoreManagerUiTests extends BaseTest {
 
     String email;
     String password;
@@ -18,16 +21,22 @@ public class StoreManagerUiTests extends BaseTest {
     @BeforeEach
     void useUser() {
         email = "v@v.ru";
-        password = "123456";
+        password = "12345678";
     }
 
     @Test
     void loginTest() {
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        /*
+        driver.get("http://localhost:8001");
 
-         */
+        driver.findElement(By.cssSelector("#email")).sendKeys(email);
+        driver.findElement(By.cssSelector("#password")).sendKeys(password);
+        driver.findElement(By.cssSelector("button.btn")).submit();
+
+        assertTrue(driver.findElement(By.xpath("//a[contains(.,'Личный кабинет')]")).isDisplayed());
 
         driver.quit();
     }
