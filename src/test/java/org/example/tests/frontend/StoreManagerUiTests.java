@@ -34,7 +34,7 @@ public class StoreManagerUiTests extends BaseTest {
 
         driver.findElement(By.cssSelector("#email")).sendKeys(email);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
-        driver.findElement(By.cssSelector("button.btn")).submit();
+        driver.findElement(By.cssSelector("button.btn")).click();
 
         assertTrue(driver.findElement(By.xpath("//a[contains(.,'Личный кабинет')]")).isDisplayed());
 
