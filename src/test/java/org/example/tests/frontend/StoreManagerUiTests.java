@@ -1,6 +1,8 @@
 package org.example.tests.frontend;
 
 import org.example.frontend.models.User;
+import org.example.frontend.pages.LoginPage;
+import org.example.frontend.pages.MainPage;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +36,9 @@ public class StoreManagerUiTests extends BaseTest {
 
     @Test
     void loginTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        MainPage mainPage = new MainPage(driver);
+
         driver.findElement(By.cssSelector("#email")).sendKeys(testUser.getEmail());
         driver.findElement(By.cssSelector("#password")).sendKeys(testUser.getPassword());
         driver.findElement(By.cssSelector("button.btn")).click();
