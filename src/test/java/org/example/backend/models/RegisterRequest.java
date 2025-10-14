@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.backend.models;
 
 // Аннотации Lombok для автоматической генерации геттеров, сеттеров, конструкторов и других методов
 public class RegisterRequest {

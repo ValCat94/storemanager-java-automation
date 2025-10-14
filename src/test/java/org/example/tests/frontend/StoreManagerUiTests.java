@@ -1,5 +1,6 @@
 package org.example.tests.frontend;
 
+import org.example.frontend.models.User;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,13 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StoreManagerUiTests extends BaseTest {
 
+    User testUser;
     String email;
     String password;
 
     @BeforeEach
     void useUser() {
-        email = "v@v.ru";
-        password = "12345678";
+        testUser = useTestUser();
+    }
+
+    private User useTestUser() {
+        return User.builder().email("v@v.ru").password("12345678").build();
     }
 
     @Test
