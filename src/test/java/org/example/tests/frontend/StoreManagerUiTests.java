@@ -1,12 +1,10 @@
 package org.example.tests.frontend;
 
 import org.example.tests.BaseTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -30,7 +28,7 @@ public class StoreManagerUiTests extends BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        driver.get("http://localhost:8001");
+        driver.get(APP_UI_URL);
 
         driver.findElement(By.cssSelector("#email")).sendKeys(email);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
