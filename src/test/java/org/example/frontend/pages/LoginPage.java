@@ -9,8 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     WebDriver driver;
 
-    @FindBy(css = "")
+    @FindBy(css = "#email")
     WebElement emailField;
+    @FindBy(css = "#password")
+    WebElement passwordField;
+    @FindBy(css = "button.btn")
+    WebElement submitButton;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -18,6 +22,8 @@ public class LoginPage {
     }
 
     public void loginAs(User user) {
-
+        emailField.sendKeys(user.getEmail());
+        passwordField.sendKeys(user.getPassword());
+        submitButton.click();
     }
 }
