@@ -9,14 +9,14 @@ public class ProductsPage {
     WebDriver driver;
 
     @FindBy(xpath = "//a[contains(.,'Личный кабинет')]")
-    WebElement privateAccount;
+    WebElement personalAccount;
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
-    public boolean isPrivateAccountDisplayed() {
-        return privateAccount.isDisplayed();
+    public boolean isPersonalAccountDisplayed() {
+        return personalAccount.isDisplayed();
     }
 }
