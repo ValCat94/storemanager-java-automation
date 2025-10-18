@@ -40,7 +40,16 @@ public class StoreManagerUiTests extends BaseTest {
         new LoginPage(driver).loginAs(testUser);
 
         // Assert
-        assertTrue(new ProductsPage(driver).isPersonalAccountDisplayed());
+        ProductsPage productsPage = new ProductsPage(driver);
+        assertTrue(productsPage.isPersonalAccountDisplayed());
+    }
+
+    @Test
+    void viewSupplierTest() {
+        new LoginPage(driver).loginAs(testUser);
+        new ProductsPage(driver).clickSuppliersLink();
+
+        System.out.println();
     }
 
     private User useTestUser() {
