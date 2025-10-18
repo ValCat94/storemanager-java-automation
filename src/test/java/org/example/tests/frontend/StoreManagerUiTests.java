@@ -7,7 +7,6 @@ import org.example.tests.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,6 +21,7 @@ public class StoreManagerUiTests extends BaseTest {
 
     @BeforeEach
     void setupData() {
+        // ArrangeS
         testUser = useTestUser();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -36,14 +36,11 @@ public class StoreManagerUiTests extends BaseTest {
 
     @Test
     void loginTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        MainPage mainPage = new MainPage(driver);
+        // Act
+        new LoginPage(driver).loginAs(testUser);
 
-        driver.findElement(By.cssSelector("#email")).sendKeys(testUser.getEmail());
-        driver.findElement(By.cssSelector("#password")).sendKeys(testUser.getPassword());
-        driver.findElement(By.cssSelector("button.btn")).click();
-
-        assertTrue(driver.findElement(By.xpath("//a[contains(.,'Личный кабинет')]")).isDisplayed());
+        // Assert
+        assertTrue(new MainPage(driver).isPrivateAccountDisplayed());
     }
 
     private User useTestUser() {
