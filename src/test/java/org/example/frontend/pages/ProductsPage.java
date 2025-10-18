@@ -5,13 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
+public class ProductsPage {
     WebDriver driver;
 
     @FindBy(xpath = "//a[contains(.,'Личный кабинет')]")
     WebElement privateAccount;
 
-    public MainPage(WebDriver driver) {
+    public ProductsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }

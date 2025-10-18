@@ -2,7 +2,7 @@ package org.example.tests.frontend;
 
 import org.example.frontend.models.User;
 import org.example.frontend.pages.LoginPage;
-import org.example.frontend.pages.MainPage;
+import org.example.frontend.pages.ProductsPage;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ public class StoreManagerUiTests extends BaseTest {
         new LoginPage(driver).loginAs(testUser);
 
         // Assert
-        assertTrue(new MainPage(driver).isPrivateAccountDisplayed());
+        assertTrue(new ProductsPage(driver).isPrivateAccountDisplayed());
     }
 
     private User useTestUser() {
