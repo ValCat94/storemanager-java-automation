@@ -11,4 +11,19 @@ public interface HasNavigationBar {
         return getDriver().findElement(
                 By.xpath("//nav//a[contains(.,'Личный кабинет')]")).isDisplayed();
     }
+
+    default void clickProductsLink() {
+        getDriver().findElement(
+                By.xpath("//nav//a[contains(.,'Продукты')]")).click();
+    }
+
+    default void clickSuppliersLink() {
+        getDriver().findElement(
+                By.xpath("//nav//a[contains(.,'Поставщики')]")).click();
+    }
+
+    default void clickWarehousesLink() {
+        getDriver().findElement(
+                By.xpath("//nav//a[contains(.,'Склады')]")).click();
+    }
 }
