@@ -1,5 +1,6 @@
 package org.example.tests.frontend;
 
+import org.example.backend.models.SupplierCreateModel;
 import org.example.frontend.models.User;
 import org.example.frontend.pages.LoginPage;
 import org.example.frontend.pages.ProductsPage;
@@ -42,6 +43,14 @@ public class StoreManagerUiTests extends BaseTest {
         // Assert
         ProductsPage productsPage = new ProductsPage(driver);
         assertTrue(productsPage.isPersonalAccountDisplayed());
+    }
+
+    @Test
+    void createSupplierTest() {
+        SupplierCreateModel createdSupplier = SupplierCreateModel.generate();
+
+        new LoginPage(driver).loginAs(testUser);
+        new ProductsPage(driver).clickSuppliersLink();
     }
 
     @Test
