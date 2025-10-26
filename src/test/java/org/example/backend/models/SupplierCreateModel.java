@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.tests.DataUtils;
 
 @Data
 @NoArgsConstructor
@@ -35,10 +36,11 @@ public class SupplierCreateModel {
 
     public static SupplierCreateModel generate() {
         String timestamp = String.valueOf(System.currentTimeMillis());
+
         /*
         return SupplierCreateModel.builder()
-                .name("Supplier_" + timestamp)
-                .contactName("Contact_" + timestamp)
+                .name(DataUtils.generateRandomLetters(8))
+                .contactName(DataUtils.generateRandomLetters(8))
                 .contactEmail(timestamp + "@test.com")
                 .phoneNumber("+1234567" + timestamp.substring(0,4))
                 .address("Test Address " + timestamp)
