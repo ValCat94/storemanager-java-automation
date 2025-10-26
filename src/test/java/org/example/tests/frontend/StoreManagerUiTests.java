@@ -5,7 +5,6 @@ import org.example.frontend.models.User;
 import org.example.frontend.pages.LoginPage;
 import org.example.frontend.pages.ProductsPage;
 import org.example.frontend.pages.SuppliersPage;
-import org.example.frontend.pages.elements.SuppliersTableRow;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StoreManagerUiTests extends BaseTest {
@@ -54,14 +54,25 @@ public class StoreManagerUiTests extends BaseTest {
         new LoginPage(driver).loginAs(testUser);
         new ProductsPage(driver).clickSuppliersLink();
 
-        SuppliersPage suppliersPage = new SuppliersPage(driver);
-        SuppliersTableRow tableRowByName = suppliersPage.getTableRowByName(createdSupplier.getName());
-        SupplierCreateModel actualSupplier = tableRowByName.getSupplierCreateModel();
+        SupplierCreateModel actualSupplier = new SuppliersPage(driver)
+                .getTableRowByName(createdSupplier.getName()).getSupplierCreateModel();
+        assertEquals(createdSupplier, actualSupplier);
 
-        System.out.println();
+        new SuppliersPage(driver).getTableRowByName(createdSupplier.getName()).clickDeleteButton();
+
+        /*driver.switchTo().alert().accept();
+        assertTrue(new SuppliersPage(driver).isDeletedSupplierNotificationDisplayed());
+         */
+        /*
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+         */
     }
 
     private User useTestUser() {
-        return User.builder().email("v@v.ru").password("12345678").build();
+        return User.builder().email("v2@v.ru").password("85456525").build();
     }
 }

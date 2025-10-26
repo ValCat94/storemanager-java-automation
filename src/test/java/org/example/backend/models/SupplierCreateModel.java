@@ -1,16 +1,15 @@
 package org.example.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.apache.commons.lang3.builder.EqualsExclude;
 import org.example.tests.DataUtils;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = {"supplierId"})
 /*
 Ради эксперимента, будем и в запросе, и в ответе использовать одну модель
  */
@@ -31,6 +30,7 @@ public class SupplierCreateModel {
     private String city;
     @JsonProperty("website")
     private String website;
+    @EqualsExclude
     @JsonProperty("supplier_id")
     private String supplierId;
 
@@ -53,11 +53,11 @@ public class SupplierCreateModel {
                 .name("Test")
                 .contactName("123321")
                 .contactEmail("supplier@supplier.ru")
-                .phoneNumber(null)
-                .address(null)
-                .country(null)
-                .city(null)
-                .website(null)
+                .phoneNumber("null")
+                .address("null")
+                .country("null")
+                .city("null")
+                .website("null")
                 .build();
     }
 }

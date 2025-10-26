@@ -29,10 +29,10 @@ public class SuppliersTableRow {
     }
 
     public void clickEditButton() {
-        root.findElement(By.cssSelector("")).click();
+        root.findElement(By.cssSelector("button.btn-outline-warning")).click();
     }
 
     public void clickDeleteButton() {
-        root.findElement(By.cssSelector("")).click();
+        root.findElement(By.cssSelector("button.btn-outline-danger")).click();
     }
 }

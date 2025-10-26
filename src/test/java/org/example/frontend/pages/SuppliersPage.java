@@ -15,6 +15,8 @@ public class SuppliersPage implements HasNavigationBar {
 
     @FindBy(css = "table#suppliers-table tbody tr")
     List<WebElement> suppliersTableRows;
+    @FindBy(xpath = "//*[contains(text(), 'Поставщик успешно удален')]")
+    WebElement deletedSupplierNotification;
 
     public SuppliersPage(WebDriver driver) {
         this.driver = driver;
@@ -26,6 +28,10 @@ public class SuppliersPage implements HasNavigationBar {
                 .map(SuppliersTableRow::new)
                 .filter(row -> row.getName().equals(name))
                 .findFirst().orElseThrow();
+    }
+
+    public boolean isDeletedSupplierNotificationDisplayed() {
+        return deletedSupplierNotification.isDisplayed();
     }
 
 }
