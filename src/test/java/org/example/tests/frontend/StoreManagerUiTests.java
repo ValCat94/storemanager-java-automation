@@ -4,6 +4,8 @@ import org.example.backend.models.SupplierCreateModel;
 import org.example.frontend.models.User;
 import org.example.frontend.pages.LoginPage;
 import org.example.frontend.pages.ProductsPage;
+import org.example.frontend.pages.SuppliersPage;
+import org.example.frontend.pages.elements.SuppliersTableRow;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,17 +48,15 @@ public class StoreManagerUiTests extends BaseTest {
     }
 
     @Test
-    void createSupplierTest() {
+    void viewSupplierTest() {
         SupplierCreateModel createdSupplier = SupplierCreateModel.generate();
 
         new LoginPage(driver).loginAs(testUser);
         new ProductsPage(driver).clickSuppliersLink();
-    }
 
-    @Test
-    void viewSupplierTest() {
-        new LoginPage(driver).loginAs(testUser);
-        new ProductsPage(driver).clickSuppliersLink();
+        SuppliersPage suppliersPage = new SuppliersPage(driver);
+        SuppliersTableRow tableRowByName = suppliersPage.getTableRowByName(createdSupplier.getName());
+        SupplierCreateModel actualSupplier = tableRowByName.getSupplierCreateModel();
 
         System.out.println();
     }

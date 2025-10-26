@@ -27,4 +27,5 @@ public class SuppliersPage implements HasNavigationBar {
                 .filter(row -> row.getName().equals(name))
                 .findFirst().orElseThrow();
     }
+
 }
