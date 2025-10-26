@@ -7,4 +7,20 @@ public abstract class BaseTest {
     public static final String BASE_URL = "";
     public static final String REGISTER_ENDPOINT = "";
 
+    protected void sleep() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void sleep(int duration) {
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -52,24 +52,20 @@ public class StoreManagerUiTests extends BaseTest {
         SupplierCreateModel createdSupplier = SupplierCreateModel.generate();
 
         new LoginPage(driver).loginAs(testUser);
+        sleep(5000);
         new ProductsPage(driver).clickSuppliersLink();
 
         SupplierCreateModel actualSupplier = new SuppliersPage(driver)
                 .getTableRowByName(createdSupplier.getName()).getSupplierCreateModel();
         assertEquals(createdSupplier, actualSupplier);
+        sleep();
 
         new SuppliersPage(driver).getTableRowByName(createdSupplier.getName()).clickDeleteButton();
+        sleep();
 
-        /*driver.switchTo().alert().accept();
+        driver.switchTo().alert().accept();
         assertTrue(new SuppliersPage(driver).isDeletedSupplierNotificationDisplayed());
-         */
-        /*
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-         */
+        sleep();
     }
 
     private User useTestUser() {
