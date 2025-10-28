@@ -14,8 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StoreManagerUiTests extends BaseTest {
 
@@ -48,23 +47,26 @@ public class StoreManagerUiTests extends BaseTest {
     }
 
     @Test
-    void viewSupplierTest() {
+    void deleteSupplierTest() {
         SupplierCreateModel createdSupplier = SupplierCreateModel.generate();
 
         new LoginPage(driver).loginAs(testUser);
         sleep(5000);
         new ProductsPage(driver).clickSuppliersLink();
 
-        SupplierCreateModel actualSupplier = new SuppliersPage(driver)
+        SuppliersPage suppliersPage = new SuppliersPage(driver);
+        SupplierCreateModel actualSupplier = suppliersPage
                 .getTableRowByName(createdSupplier.getName()).getSupplierCreateModel();
         assertEquals(createdSupplier, actualSupplier);
         sleep();
 
-        new SuppliersPage(driver).getTableRowByName(createdSupplier.getName()).clickDeleteButton();
+        suppliersPage.getTableRowByName(createdSupplier.getName()).clickDeleteButton();
         sleep();
 
         driver.switchTo().alert().accept();
-        assertTrue(new SuppliersPage(driver).isDeletedSupplierNotificationDisplayed());
+        assertTrue(suppliersPage.isDeletedSupplierNotificationDisplayed());
+
+        assertFalse(suppliersPage.isSupplierExistsOnThePage(createdSupplier.getName()));
         sleep();
     }
 

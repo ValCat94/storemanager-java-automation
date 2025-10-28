@@ -30,6 +30,13 @@ public class SuppliersPage implements HasNavigationBar {
                 .findFirst().orElseThrow();
     }
 
+    public boolean isSupplierExistsOnThePage(String name) {
+        return suppliersTableRows.stream()
+                .map(SuppliersTableRow::new)
+                .map(SuppliersTableRow::getName)
+                .toList().contains(name);
+    }
+
     public boolean isDeletedSupplierNotificationDisplayed() {
         return deletedSupplierNotification.isDisplayed();
     }
