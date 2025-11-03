@@ -69,8 +69,4 @@ public class StoreManagerUiTests extends BaseTest {
         assertFalse(suppliersPage.isSupplierExistsOnThePage(createdSupplier.getName()));
         sleep();
     }
-
-    private User useTestUser() {
-        return User.builder().email("v2@v.ru").password("85456525").build();
-    }
 }

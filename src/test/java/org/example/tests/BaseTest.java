@@ -1,5 +1,7 @@
 package org.example.tests;
 
+import org.example.frontend.models.User;
+
 public abstract class BaseTest {
     public static final String APP_UI_URL = "http://localhost:8001";
 
@@ -21,6 +23,10 @@ public abstract class BaseTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected User useTestUser() {
+        return User.builder().email("v2@v.ru").password("85456525").build();
     }
 
 }
