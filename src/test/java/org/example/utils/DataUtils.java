@@ -1,4 +1,4 @@
-package org.example.tests;
+package org.example.utils;
 
 import java.util.Random;
 import java.util.stream.Collectors;
