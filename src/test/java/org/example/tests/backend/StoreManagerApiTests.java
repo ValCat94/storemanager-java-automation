@@ -1,8 +1,21 @@
 package org.example.tests.backend;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 public class StoreManagerApiTests {
+
+    public static final String BASE_URL = "http://localhost:8000/";
+    public static final String REGISTER_ENDPOINT = "register";
+    public static final String BODY = """
+            {
+                "name": "new_name",
+                "email": "new_email@example.com",
+                "password": "123456"
+            }
+    """;
 
     @Test
     void firstApiTest() {
@@ -15,6 +28,22 @@ public class StoreManagerApiTests {
         4. Используем константы с URL приложения и эндпоинтом
         5. Выносим отправку запроса в отдельный метод для более удобного использования
          */
+
+        Response response = RestAssured
+                .given()
+                    .baseUri(BASE_URL)
+                    .basePath(REGISTER_ENDPOINT)
+                    .contentType(ContentType.JSON)
+                    .body(BODY)
+                    .log()
+                    .all()
+                .when()
+                    .post()
+                .then()
+                    .log()
+                    .all()
+                    .extract()
+                    .response();
     }
 
 }
