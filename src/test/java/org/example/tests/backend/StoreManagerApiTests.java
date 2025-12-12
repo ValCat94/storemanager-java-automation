@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class StoreManagerApiTests {
 
     public static final String BASE_URL = "http://localhost:8001/";
-    public static final String REGISTER_ENDPOINT = "register";
+    public static final String REGISTER_ENDPOINT = "register/";
     public static final String BODY = """
             {
                 "name": "new_name",
@@ -30,7 +30,7 @@ public class StoreManagerApiTests {
         5. Выносим отправку запроса в отдельный метод для более удобного использования
          */
 
-        RegisterRequest request = new RegisterRequest("Valeria", "v@test.com", "1232123");
+        RegisterRequest request = new RegisterRequest("Valeria", "v@test.com", "123212345");
 
         Response response = RestAssured
                 .given()
