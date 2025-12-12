@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class StoreManagerApiTests {
 
-    public static final String BASE_URL = "http://localhost:8000/";
+    public static final String BASE_URL = "http://localhost:8001/";
     public static final String REGISTER_ENDPOINT = "register";
     public static final String BODY = """
             {
