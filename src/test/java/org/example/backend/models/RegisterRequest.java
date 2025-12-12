@@ -1,9 +1,19 @@
 package org.example.backend.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
 // Аннотации Lombok для автоматической генерации геттеров, сеттеров, конструкторов и других методов
+@Data
+@AllArgsConstructor
+@Builder
 public class RegisterRequest {
 
     // Поля класса, представляющие данные для регистрации пользователя
+    String name;
+    String email;
+    String password;
 
     // Метод для генерации экземпляра RegisterRequest с случайными данными
     // Используется паттерн Builder для создания объекта

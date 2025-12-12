@@ -3,6 +3,7 @@ package org.example.tests.backend;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.example.backend.models.RegisterRequest;
 import org.junit.jupiter.api.Test;
 
 public class StoreManagerApiTests {
@@ -29,12 +30,14 @@ public class StoreManagerApiTests {
         5. Выносим отправку запроса в отдельный метод для более удобного использования
          */
 
+        RegisterRequest request = new RegisterRequest("Valeria", "v@test.com", "1232123");
+
         Response response = RestAssured
                 .given()
                     .baseUri(BASE_URL)
                     .basePath(REGISTER_ENDPOINT)
                     .contentType(ContentType.JSON)
-                    .body(BODY)
+                    .body(request)
                     .log()
                     .all()
                 .when()
