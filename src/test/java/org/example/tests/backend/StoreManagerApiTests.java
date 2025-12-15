@@ -2,8 +2,8 @@ package org.example.tests.backend;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.example.backend.models.RegisterRequest;
+import org.example.backend.models.RegisterResponse;
 import org.junit.jupiter.api.Test;
 
 public class StoreManagerApiTests {
@@ -25,7 +25,7 @@ public class StoreManagerApiTests {
 
         RegisterRequest request = RegisterRequest.generate();
 
-        Response response = RestAssured
+        RegisterResponse registerResponse = RestAssured
                 .given()
                     .baseUri(BASE_URL)
                     .basePath(REGISTER_ENDPOINT)
@@ -39,7 +39,6 @@ public class StoreManagerApiTests {
                     .log()
                     .all()
                     .extract()
-                    .response();
+                    .response().as(RegisterResponse.class);
     }
-
 }
