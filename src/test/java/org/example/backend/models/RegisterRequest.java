@@ -21,7 +21,11 @@ public class RegisterRequest {
     // name генерируется как "user_" + текущее время в миллисекундах
     // password генерируется как "pass_" + текущее время в миллисекундах
     public static RegisterRequest generate() {
-        return null;
+        return RegisterRequest.builder()
+                .email(System.currentTimeMillis() + "@email.com")
+                .name("user_" + System.currentTimeMillis())
+                .password("pass_" + System.currentTimeMillis())
+                .build();
     }
 }
 
